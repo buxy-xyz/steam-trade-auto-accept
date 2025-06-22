@@ -1,0 +1,46 @@
+# Steam Trade Auto-Accepter Configuration
+# Copy this file to .env and fill in your actual values
+
+# ============================================================================
+# EMAIL CONFIGURATION (Required)
+# ============================================================================
+# Your email server (Gmail users should use imap.gmail.com)
+EMAIL_SERVER=imap.gmail.com
+
+# Your email address that receives Steam trade notifications
+EMAIL_USERNAME=youremail@gmail.com
+
+# Your email password or app password
+# For Gmail: Use an App Password instead of your regular password
+# Instructions: https://support.google.com/accounts/answer/185833
+# Format: xxxx xxxx xxxx xxxx (Gmail app passwords have spaces)
+EMAIL_PASSWORD=abcd efgh ijkl mnop
+
+# ============================================================================
+# SECURITY CONFIGURATION (Required)
+# ============================================================================
+# Comma-separated list of trusted Steam traders who can send you trades
+# You can use Steam profile URLs, Steam IDs, or parts of the URL
+# Examples:
+#   - /id/username
+#   - steamcommunity.com/id/username
+#   - /profiles/76561198123456789 (if /id/ is not set)
+ALLOWED_TRADERS=/id/your_custom_id
+
+# ============================================================================
+# APPLICATION CONFIGURATION (Optional)
+# ============================================================================
+# How often to check for new emails (in seconds)
+# Default: 300 (5 minutes)
+CHECK_INTERVAL=300
+
+# ============================================================================
+# ADVANCED CONFIGURATION (Optional)
+# ============================================================================
+# Logging level (DEBUG, INFO, WARNING, ERROR)
+# Default: INFO
+# LOG_LEVEL=INFO
+
+# Timezone for container (optional)
+# Default: UTC
+# TZ=Europe/Berlin
