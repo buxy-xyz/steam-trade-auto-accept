@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  steam-trade-accepter:
+    build: .
+    # Or use a pre-built image:
+    # image: your-registry/steam-trade-accepter:latest
+    
+    container_name: steam-trade-accepter
+    restart: unless-stopped
+    
+    environment:
+      # Email Configuration
+      EMAIL_SERVER: "imap.gmail.com"                    # IMAP server
+      EMAIL_USERNAME: "your-email@gmail.com"            # Your email address
+      EMAIL_PASSWORD: "your-app-password-here"          # Gmail app password or email password
+      
+      # Security Configuration
+      ALLOWED_TRADERS: "/id/buxy_xyz,steamcommunity.com/id/buxy_xyz"  # Comma-separated list of trusted traders
+      
+      # Application Configuration
+      CHECK_INTERVAL: "300"                             # Check for emails every 5 minutes (300 seconds)
+    
+    # Optionally, you can use an environment file instead:
+    # env_file:
+    #   - .env
+    
+    # Resource limits (optional)
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+    
+    # Health check (optional)
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
